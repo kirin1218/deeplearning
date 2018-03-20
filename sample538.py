@@ -43,17 +43,17 @@ print(X)
 print("train_y")
 print(train_y)
 #   学習を繰り返す
-#err = E(X, train_y)
-#while diff > 1e-2:
-#    #   パラメータを更新
-#    theta = theta - ETA * np.dot(f(x) - train_y, X)
-#    #   前回の誤差と差分を計算
-#    current_error = E(X,train_y)
-#    diff = error - current_error
-#    error = current_error
-#
-#x = np.linspace(-3,3,100)
-#
-#plt.plot(train_z, train_y, 'o')
-#plt.plot(x, f(to_matrix(x)))
-#plt.show()
+error = E(X, train_y)
+while diff > 1e-2:
+    #   パラメータを更新
+    theta = theta - ETA * np.dot(f(X) - train_y, X)
+    #   前回の誤差と差分を計算
+    current_error = E(X,train_y)
+    diff = error - current_error
+    error = current_error
+
+x = np.linspace(-3,3,100)
+
+plt.plot(train_z, train_y, 'o')
+plt.plot(x, f(to_matrix(x)))
+plt.show()
