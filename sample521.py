@@ -49,3 +49,7 @@ while diff > 1e-2:
     log = '{}: theta0 = {:.3f}, theta1= {:.3f}, diff= {:.4f}'
     print(log.format(count, theta0, theta1,diff))
 
+x = np.linspace( -3, 3, 100 )
+plt.plot( train_z, train_y, 'o' )
+plt.plot(x,f(x))
+plt.show()
