@@ -26,5 +26,25 @@ x = to_matrix(train_z)
 
 #	標準化した学習データをプロット
 plt.plot(train_z[train_y == 1, 0], train_z[train_y == 1, 1], 'o')
-plt.plot(train_z[train_y == 0, 0], train_y[train_y == 0, 1], 'x')
+plt.plot(train_z[train_y == 0, 0], train_z[train_y == 0, 1], 'x')
+plt.show()
+
+#   シグモイド関数
+def f(x):
+    return 1/(1+np.exp(-np.dot(x,theta)))
+
+#   学習率
+ETA = 1e-3
+
+#   繰り返し回数
+epoch = 5000
+
+for _ in range(epoch):
+    theta = theta - ETA*np.dot(f(x)-train_y, x)
+
+x0 = np.linspace(-2, 2, 100)
+
+plt.plot(train_z[train_y == 1, 0], train_z[train_y == 1, 1], 'o')
+plt.plot(train_z[train_y == 0, 0], train_z[train_y == 0, 1], 'x')
+plt.plot(x0, -(theta[0] + theta[1] * x0)/ theta[2], linestyle='dashed')
 plt.show()
